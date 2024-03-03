@@ -89,7 +89,33 @@ F H <BR>
 ['0', '1', '2', '3', '4']
 
 <hr>
-<h3>Result:</h3>
+## Program
+```
+from collections import defaultdict
+def dfs(g,s,vi,p):
+    p.append(s)
+    vi[s]=True
+    for ne in g[s]:
+        if vi[ne]==False:
+             dfs(g,ne,vi,p)
+             vi[ne]=True
+    return p
+g=defaultdict(list)
+n,e=map(int,input().split())
+for i in range(e):
+    u,v=map(str,input().split())
+    g[u].append(v)
+    g[v].append(u)
+st=input()
+vi=defaultdict(bool)
+p=[]
+tdp=dfs(g,st,vi,p)
+print(tdp)
+```
 <hr>
+## Output:
+![Exp 2 DFS](https://github.com/Vikaash19/19AI405ExpNo2/assets/148514589/00a44bf0-a89c-40e0-a1ba-867ae049ee4e)
+
+<h3>Result:</h3>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
